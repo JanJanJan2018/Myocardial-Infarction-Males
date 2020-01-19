@@ -186,6 +186,13 @@ MI$Symbol <- row.names(MI)
 
 Healthy <- Healthy[,c(8,7,1:6)]
 MI <- MI[,c(8,7,1:6)]
+
+MI_means <- cbind(Healthy,MI)
+MI_means1 <- MI_means[,c(1,2,10,3:8,11:16)]
+FC_MI <- MI_means1 %>% mutate( FC_MI_males = MI_Male_Means/HealthyMale_Means)
+FC_MI1 <- FC_MI[,c(1,16,2:15)]
+row.names(FC_MI1) <- FC_MI$Symbol
+write.csv(FC_MI1,'foldChange_MI_males.csv', row.names=TRUE)
 ```
 
 
